@@ -1,1 +1,0 @@
-import{b as s,o as a,c as o,g as c,i as t,_ as n,j as r}from"./index-CG54iUaD.js";const l={class:"flex flex-col items-center h-screen"},p=s({__name:"DocsPage",setup(_){return(f,e)=>(a(),o("div",l,[c(t(n)),e[0]||(e[0]=r("div",{class:"w-full h-full max-w-screen-xl px-4 md:px-28 py-8"}," Docs ",-1))]))}});export{p as default};

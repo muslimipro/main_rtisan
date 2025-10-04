@@ -1,1 +1,0 @@
-import{b as s,o as a,c as t,g as o,i as c,_ as r,j as n}from"./index-CG54iUaD.js";const l={class:"flex flex-col items-center h-screen"},p=s({__name:"ProjectsPage",setup(_){return(f,e)=>(a(),t("div",l,[o(c(r)),e[0]||(e[0]=n("div",{class:"w-full h-full max-w-screen-xl px-4 md:px-28 py-8"}," Projects ",-1))]))}});export{p as default};
