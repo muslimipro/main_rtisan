@@ -1,0 +1,52 @@
+import{s as te}from"./index-BBtLf1dK.js";import{B as se,s as ne,o as t,c as a,m as oe,d as ae,u as le,a as re,r as b,b as T,e as ie,f as J,g as ce,h as x,i as e,j as s,t as u,k as de,F as I,l as N,n as Q,p as f,q as ue,v as me,w as pe}from"./index-Cl-EWMmq.js";import{U as Y,u as fe,_ as he}from"./MainHeader.vue_vue_type_script_setup_true_lang-COBN57US.js";import{R as Z,m as ee}from"./mapRouteFromDto-mvCgavGt.js";import{g as ge,f as V}from"./groupRoutesByType-B8LQ_TR7.js";import{L as xe}from"./lessonApi-CvHtylz7.js";import{m as ye}from"./mapLessonFromDto-BRb_Xlqa.js";import"./index-B6SYeHFo.js";import"./index-mH57kVTe.js";import"./index-DajmB_wk.js";import"./logo-D1-3uCnC.js";import"./mapUnitFromDto-BRBO9875.js";var _e=function(h){var l=h.dt;return`
+.p-skeleton {
+    overflow: hidden;
+    background: `.concat(l("skeleton.background"),`;
+    border-radius: `).concat(l("skeleton.border.radius"),`;
+}
+
+.p-skeleton::after {
+    content: "";
+    animation: p-skeleton-animation 1.2s infinite;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(-100%);
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), `).concat(l("skeleton.animation.background"),`, rgba(255, 255, 255, 0));
+}
+
+[dir='rtl'] .p-skeleton::after {
+    animation-name: p-skeleton-animation-rtl;
+}
+
+.p-skeleton-circle {
+    border-radius: 50%;
+}
+
+.p-skeleton-animation-none::after {
+    animation: none;
+}
+
+@keyframes p-skeleton-animation {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes p-skeleton-animation-rtl {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+`)},ve={root:{position:"relative"}},be={root:function(h){var l=h.props;return["p-skeleton p-component",{"p-skeleton-circle":l.shape==="circle","p-skeleton-animation-none":l.animation==="none"}]}},ke=se.extend({name:"skeleton",theme:_e,classes:be,inlineStyles:ve}),we={name:"BaseSkeleton",extends:ne,props:{shape:{type:String,default:"rectangle"},size:{type:String,default:null},width:{type:String,default:"100%"},height:{type:String,default:"1rem"},borderRadius:{type:String,default:null},animation:{type:String,default:"wave"}},style:ke,provide:function(){return{$pcSkeleton:this,$parentInstance:this}}},i={name:"Skeleton",extends:we,inheritAttrs:!1,computed:{containerStyle:function(){return this.size?{width:this.size,height:this.size,borderRadius:this.borderRadius}:{width:this.width,height:this.height,borderRadius:this.borderRadius}}}};function Le(m,h,l,w,P,$){return t(),a("div",oe({class:m.cx("root"),style:[m.sx("root"),$.containerStyle],"aria-hidden":"true"},m.ptmi("root")),null,16)}i.render=Le;const Se=ae("home-store",()=>{const m=le(),{t:h}=re(),l=b([]),w=b(!1);async function P(){try{w.value=!0;const{data:n}=await Z.getRoutes();l.value=(n==null?void 0:n.map(ee))??[]}catch(n){m.add({severity:"error",summary:n,life:2e3})}finally{w.value=!1}}const $=T(()=>ge(l.value)),M=T(()=>V(l.value,"main")),q=T(()=>V(l.value,"side")),y=T(()=>V(l.value,"one_kit")),B=T(()=>V(l.value,"hackathon"));let D={};const U=b(0),z=b(!1);async function E(){try{z.value=!0;const{data:n}=await Y.getUserProgress();U.value=n.xp,D=n.attempts.reduce((d,o)=>(d[o.date]={date:o.date,count:o.count,success:o.success},d),{})}catch(n){m.add({severity:"error",summary:n,life:2e3})}finally{z.value=!1}}const L=new Date,j=L.toISOString().slice(0,10),A=(L.getDay()+6)%7,_=new Date(L);_.setDate(L.getDate()-A-14);const F=_;function v(n,d){const o=(n-1)*7+(d-1),c=new Date(F);return c.setDate(F.getDate()+o),c.toISOString().slice(0,10)}function H(n,d){const o=v(n,d);if(o>j)return"bg-white";const c=D[o];return c?c.success?"bg-green-400":"bg-green-100":"bg-gray-200"}function O(n,d){const o=v(n,d);if(o>j)return"";const c=D[o];return c?`${o}
+attempts: ${c.count}
+success: ${c.success}`:`${o}: no attempts`}const r=b({lesson_id:0,lesson_level_name:"",lesson_name:"",lesson_type:"learn",route_id:0,route_name:""}),g=b(""),S=b(""),R=b(!1);async function X(){try{R.value=!0;const{data:n}=await Y.getUserLastLesson();r.value=n,g.value=h("continue")}catch(n){const{data:d}=await xe.getLessonById(5,"1",void 0),o=ye(d),{data:c}=await Z.getRouteById(1),C=ee(c);r.value.lesson_id=o.id,r.value.lesson_level_name=C.levels[0].name,r.value.lesson_name=o.name,r.value.route_id=1,r.value.route_name=C.name,g.value=h("start"),m.add({severity:"error",summary:n,life:2e3})}finally{R.value=!1,S.value="/v2/lesson/"+r.value.lesson_id+"?route_id="+r.value.route_id}}return{routes:l,isRoutesLoading:w,loadRoutes:P,groupedRoutes:$,mainRoutes:M,sideRoutes:q,oneKitRoutes:y,hackathonRoutes:B,isProgressLoading:z,loadProgress:E,getDayClass:H,getDayTooltip:O,xp:U,isLastLessonLoading:R,lastLesson:r,lastButtonLabel:g,lastButtonURL:S,loadLastLesson:X}}),Re={class:"flex flex-col items-center h-screen"},$e={class:"w-full h-full max-w-[1400px] px-4 md:px-28 py-8"},Be={class:"flex flex-col gap-8 py-8"},De={class:"flex gap-8"},ze={class:"flex flex-col gap-8"},Ce={class:"flex flex-col w-[400px] h-[286px] bg-white border border-gray-100 rounded-3xl p-8"},Te={key:0,class:"text-4xl font-sans font-light text-gray-500 mb-4"},Ie={key:1,class:"text-4xl font-sans font-light text-gray-500 mb-4"},Pe={class:"font-normal text-5xl text-black"},Ue={class:"flex"},je={class:"flex-grow flex gap-2 justify-between items-end text-gray-500"},Ae={class:"grid grid-rows-6 grid-cols-7 gap-0.5 w-full h-full"},Fe=["title"],Xe={class:"w-[400px] h-[180px] bg-purple-50 border border-gray-100 rounded-3xl p-8"},Ne={key:0},Ve={key:1,class:"flex flex-col justify-between gap-5"},Me={class:"flex items-center justify-center gap-4"},qe={class:"flex flex-col"},Ee={class:"text-lg"},He={class:"text-gray-500"},Oe={class:"flex flex-col gap-8 w-full"},Ke={class:"relative flex items-center bg-slate-50 border border-gray-100 rounded-3xl p-5"},We={class:"flex flex-col"},Ge={class:"italic text-gray-500"},Je={key:1,class:"text-2xl"},Qe={class:"flex flex-col absolute right-5 top-3 items-end"},Ye={key:1,class:"text-gray-400"},Ze={key:3,class:"text-gray-500"},et={class:"flex-grow flex flex-col justify-between items-center bg-white border border-gray-100 rounded-3xl px-8 pb-4 pt-10"},tt={class:"flex flex-col items-center"},st={key:1,class:"text-2xl font-semibold mb-2"},nt={key:3,class:"text-blue-400 font-sans"},ot={key:1,class:"text-[100px]"},at={class:"flex flex-col items-center w-full min-w-full"},lt={key:1,class:"text-gray-500 font-sans mb-4"},rt={class:"flex gap-4 bg-gray-50 rounded-3xl p-8 overflow-x-scroll"},it={key:0,class:"flex flex-row gap-4"},ct={class:"flex flex-col items-center"},dt={class:"text-lg font-semibold"},ut={class:"text-sm text-gray-500 text-center"},St=ie({__name:"HomePage",setup(m){const h=me(),l=Se(),{isRoutesLoading:w,mainRoutes:P,sideRoutes:$,isProgressLoading:M,xp:q,isLastLessonLoading:y,lastLesson:B,lastButtonLabel:D,lastButtonURL:U}=J(l),{loadRoutes:z,loadProgress:E,getDayClass:L,getDayTooltip:j,loadLastLesson:K}=l,A=fe(),{userInfo:_,userLabel:F,isUserInfoLoading:v}=J(A),{loadUserInfo:H}=A,O=["pi pi-microchip","pi pi-arrow-up-right","pi pi-code","pi pi-box"];return ce(()=>{H(),E(),K(),z()}),(r,g)=>{var X,n,d,o,c,C,W,G;const S=pe,R=te;return t(),a("div",Re,[x(e(he)),s("div",$e,[s("div",Be,[s("div",De,[s("div",ze,[s("div",Ce,[e(M)?(t(),a("div",Te,[x(e(i),{width:"11rem",height:"49px"})])):(t(),a("div",Ie,[s("span",Pe,u(e(q)),1),g[1]||(g[1]=de(" xp "))])),s("div",Ue,[(t(),a(I,null,N(["Mo","Tu","We","Th","Fr","Sa","Su"],(p,k)=>s("div",{key:`day-${k}`,class:"w-full h-full flex items-center justify-center rounded text-xs text-gray-500 font-medium"},u(p),1)),64))]),s("div",je,[s("div",Ae,[(t(),a(I,null,N(3,p=>(t(),a(I,null,[(t(),a(I,null,N(7,k=>s("div",{key:`cell-${p}-${k}`,class:Q(["aspect-square flex items-center justify-center rounded m-1",e(L)(p,k)]),title:e(j)(p,k)},null,10,Fe)),64))],64))),64))])])]),s("div",Xe,[e(v)?(t(),a("div",Ne,[e(y)?(t(),f(e(i),{key:0,height:"115px",class:"w-full mb-2"})):ue("",!0)])):(t(),a("div",Ve,[s("div",Me,[g[2]||(g[2]=s("i",{class:"pi pi-crown text-orange-300",style:{"font-size":"28px"}},null,-1)),s("div",qe,[s("div",Ee,u(r.$t("unlockPremium")),1),s("div",He,u(r.$t("getExclusiveContent")),1)])]),x(S,{label:r.$t("explorePremium"),severity:"help",class:"rounded-full"},null,8,["label"])]))])]),s("div",Oe,[s("div",Ke,[e(v)?(t(),f(e(i),{key:0,class:"mr-6",shape:"circle",size:"4rem"})):(X=e(_))!=null&&X.small_avatar_url?(t(),f(R,{key:1,class:"mr-6",size:"xlarge",shape:"circle",image:(n=e(_))==null?void 0:n.small_avatar_url},null,8,["image"])):(t(),f(R,{key:2,label:e(F),class:"mr-6",size:"xlarge",shape:"circle"},null,8,["label"])),s("div",We,[s("span",Ge,u(r.$t("welcomeBack")),1),e(v)?(t(),f(e(i),{key:0,width:"15rem",height:"33px"})):(t(),a("div",Je,u((d=e(_))==null?void 0:d.name),1))]),s("div",Qe,[e(v)?(t(),f(e(i),{key:0,width:"12rem",height:"25px",class:"mb-1"})):(t(),a("div",Ye,u((o=e(_))==null?void 0:o.school_name),1)),e(v)?(t(),f(e(i),{key:2,width:"3rem",height:"25px"})):(t(),a("div",Ze,u((c=e(_))==null?void 0:c.class_name),1))])]),s("div",et,[s("div",tt,[e(y)?(t(),f(e(i),{key:0,width:"15rem",height:"30px",class:"mb-2"})):(t(),a("div",st,u((C=e(B))==null?void 0:C.lesson_name),1)),e(y)?(t(),f(e(i),{key:2,width:"10rem",height:"20px",class:"mb-2"})):(t(),a("div",nt,u((W=e(B))==null?void 0:W.lesson_level_name),1))]),e(y)?(t(),f(e(i),{key:0,width:"10rem",height:"9rem",class:"mb-2"})):(t(),a("div",ot,"🚀")),s("div",at,[e(y)?(t(),f(e(i),{key:0,width:"10rem",height:"20px",class:"mb-4"})):(t(),a("div",lt,u((G=e(B))==null?void 0:G.route_name),1)),x(S,{label:e(D),class:"rounded-full h-12 min-w-full",disabled:e(y),onClick:g[0]||(g[0]=p=>e(h).push(e(U)))},null,8,["label","disabled"])])])])]),s("div",rt,[e(w)?(t(),a("div",it,[x(e(i),{height:"16rem",width:"18rem"}),x(e(i),{height:"16rem",width:"18rem"}),x(e(i),{height:"16rem",width:"18rem"}),x(e(i),{height:"16rem",width:"18rem"})])):(t(!0),a(I,{key:1},N([...e(P),...e($)],(p,k)=>(t(),a("div",{key:p.id,class:"flex-shrink-0 flex flex-col items-center justify-between h-64 w-72 bg-white rounded-xl p-4"},[s("div",ct,[s("div",dt,u(p.name),1),s("div",ut,u(p.description),1)]),s("div",{class:Q(["text-[64px] text-gray-500",O[k]])},null,2),x(S,{label:r.$t("start"),class:"rounded-full w-full",severity:"info",variant:"outlined",onClick:mt=>e(h).push({name:"route",params:{id:p.id}})},null,8,["label","onClick"])]))),128))])])])])}}});export{St as default};
